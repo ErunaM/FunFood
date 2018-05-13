@@ -15,10 +15,12 @@ module.exports = app => {
 			}
 		});
 	});
-	app.get('/api/city', (req, res) => {
+	app.post('/api/city', (req, res) => {
+		const { searchbar } = req.body;
 		client.getCities(
 			{
-				q: 'Auckland' //query by city name
+				q: searchbar, //query by city name
+				country_name: 'New Zealand'
 			},
 			function(err, result) {
 				if (!err) {
