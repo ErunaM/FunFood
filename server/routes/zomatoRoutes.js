@@ -4,10 +4,13 @@ const client = zomato.createClient({
 });
 
 module.exports = app => {
-	app.get('/api/cuisines', (req, res) => {
-		client.getCuisines({ city_id: '79' }, function(err, result) {
+	app.post('/api/cuisines', (req, res) => {
+		var t = req.body.data.id;
+		//console.log(t);
+
+		client.getCuisines({ city_id: t }, function(err, result) {
 			if (!err) {
-				console.log(result);
+				//console.log(result);
 				res.send(result);
 			} else {
 				console.log(err);
@@ -16,6 +19,7 @@ module.exports = app => {
 		});
 	});
 	app.post('/api/city', (req, res) => {
+		//receives city name should return a list of categories of food
 		const { searchbar } = req.body;
 		client.getCities(
 			{
@@ -24,9 +28,12 @@ module.exports = app => {
 			},
 			function(err, result) {
 				if (!err) {
-					console.log(result);
-					res.send(result);
+					var t = JSON.parse(result);
+					const city = t.location_suggestions[0]; // gives me the city object
+					//console.log(city);
+					res.send(city);
 				} else {
+					z = {};
 					console.log(err);
 					res.send(err);
 				}
