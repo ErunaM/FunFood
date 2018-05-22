@@ -10,9 +10,16 @@ class ZomatoCity extends Component {
 		return (
 			<div className="container">
 				<div className="row">
+
 					<form
-						onSubmit={this.props.handleSubmit(values =>
-							this.props.fetchCitys(values)
+						onSubmit={this.props.handleSubmit(async values => {
+							await this.props.fetchCitys(values);
+								//console.log(this.props);
+							this.props.onCuisineSubmit();
+						//	console.log("test");
+
+
+						}, this.props.onCuisineSubmit
 						)}
 					>
 						<Field type="search" name="searchbar" component={SearchBar} />
@@ -30,12 +37,11 @@ class ZomatoCity extends Component {
 		);
 	}
 }
-function validate(values) {
-	console.log(values);
-}
+
 ZomatoCity = reduxForm({
-	validate,
 	form: 'ZomatoCity'
 })(ZomatoCity);
+
+
 
 export default connect(null, actions)(ZomatoCity);

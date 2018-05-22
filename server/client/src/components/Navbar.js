@@ -7,7 +7,7 @@ class NavBar extends Component {
 				<nav>
 					<div className="nav-wrapper blue">
 						<a href="#" className="brand-logo center">
-							The Student Project
+							The FunFood Project
 						</a>
 						<ul id="nav-mobile" className="left hide-on-med-and-down">
 							<li>
