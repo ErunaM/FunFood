@@ -24,7 +24,7 @@ class ZomatoCity extends Component {
 					>
 						<Field type="search" name="searchbar" component={SearchBar} />
 						<button
-							className="col s2 btn waves-effect waves-light right"
+							className="col s2 btn waves-effect waves-light brown darken-1 right"
 							type="submit"
 							name="action"
 						>
